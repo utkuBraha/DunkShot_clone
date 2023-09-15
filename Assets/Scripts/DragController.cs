@@ -153,8 +153,6 @@ public class DragController : MonoBehaviour
     {
         Vector2 currentPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = currentPosition - dragStartPos;
-
-        
         int numberOfPoints = 100; 
         Vector3[] positions = new Vector3[numberOfPoints];
 
@@ -165,7 +163,7 @@ public class DragController : MonoBehaviour
             float y = dragStartPos.y + direction.y * t + 0.5f * Physics2D.gravity.y * t * t;
             positions[i] = new Vector3(x, y, 0);
         }
-
+        // y vektorunu - ile carip yonunu tersine cevirebiliriz
         lineRenderer.positionCount = numberOfPoints;
         lineRenderer.SetPositions(positions);
     }

@@ -17,7 +17,13 @@ public class CameraFollower : MonoBehaviour
         if (target)
         {
             Vector3 desiredPosition = target.position + _offset;
-            transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+            var transformPosition = transform.position;
+            transformPosition.y = Mathf.Lerp(transformPosition.y, desiredPosition.y, smoothSpeed);
+            transform.position = transformPosition;
+        }
+        if (transform.position.y < 0)
+        {
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
     }
 }

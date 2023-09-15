@@ -1,39 +1,40 @@
-using System;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI gameOverText;
-    [SerializeField] private Button restartButton;
-    [SerializeField] private Button mainMenuButton;
     [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject gameOverPanel;
+    
     private bool _isGameActive;
 
-    private void Start()
-    {
-        restartButton.onClick.AddListener(RestartGame);
-        mainMenuButton.onClick.AddListener(RestartGame);    }
+  
 
     public void GameOver()
     {
-        restartButton.gameObject.SetActive(true);
-        gameOverText.gameObject.SetActive(true);
-        mainMenuButton.gameObject.SetActive(true);
-        _isGameActive = false;
+        Time.timeScale = 0;
+        gameOverPanel.SetActive(true);
     }
     public void StartGame()
     {
         _isGameActive = true;
         panel.SetActive(false);
-        restartButton.gameObject.SetActive(false);
-        gameOverText.gameObject.SetActive(false);
-        mainMenuButton.gameObject.SetActive(false);
+    }
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        pausePanel.SetActive(true);
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        pausePanel.SetActive(false);
     }
     public void RestartGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
