@@ -267,8 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 1591932958}
-  rigidbody2D: {fileID: 1591932955}
-  dragLimit: 5
+  rb: {fileID: 1591932955}
   forceAdd: 10
 --- !u!4 &89737761
 Transform:
@@ -1106,7 +1105,7 @@ Transform:
   m_GameObject: {fileID: 497365879}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0.11, z: 2.431947}
+  m_LocalPosition: {x: -0.01, y: 0.19, z: 2.431947}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1127,7 +1126,6 @@ MonoBehaviour:
   spawnObjects: {fileID: 3171376665094063822, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
   minX: -2.2
   maxX: 2.2
-  spawnPoint: {fileID: 1591932954}
   ballScript: {fileID: 1591932959}
 --- !u!1 &510488494
 GameObject:
@@ -3122,8 +3120,6 @@ LineRenderer:
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -3132,7 +3128,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.07189369
+        value: 0.33986092
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -3140,8 +3136,8 @@ LineRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.98554564
-        value: 0.124186665
+        time: 1
+        value: 0.1830093
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -3723,11 +3719,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 967751276014261338, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6111885
+      value: 1.96
       objectReference: {fileID: 0}
     - target: {fileID: 967751276014261338, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7717309
+      value: -1.58
       objectReference: {fileID: 0}
     - target: {fileID: 967751276014261338, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3764,6 +3760,10 @@ PrefabInstance:
     - target: {fileID: 3171376665094063822, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
       propertyPath: m_Name
       value: Hoop (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171376665094063822, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
