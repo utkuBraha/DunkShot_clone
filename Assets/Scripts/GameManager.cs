@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         gameOverPanel.SetActive(true);
+        Destroy(GameObject.FindWithTag("Player"));
     }
     public void StartGame()
     {
