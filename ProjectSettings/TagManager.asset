@@ -6,6 +6,7 @@ TagManager:
   tags:
   - scoretrigger
   - gameovertrigger
+  - star
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Spawner : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class Spawner : MonoBehaviour
     private int _previousScore;
     private List<GameObject> _spawnedObjects = new List<GameObject>();
     private Vector3 _lastSpawnedPosition;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    private int _score;
     void Start()
     {
       ballScript = GameObject.Find("Ball").GetComponent<BallScript>();
@@ -57,30 +61,30 @@ public class Spawner : MonoBehaviour
         GameObject newHoop = Instantiate(spawnObjects, spawnPosition, Quaternion.identity);
         _spawnedObjects.Add(newHoop);
         _lastSpawnedPosition = spawnPosition;
+       
+        if (Random.value < 0.9f)
+        {
+            Transform starTransform = newHoop.transform.Find("star");
+            if (starTransform != null)
+            {
+                starTransform.gameObject.SetActive(true);
+                StarController starController = starTransform.GetComponent<StarController>();
+                if (starController != null)
+                {
+                    starController.OnStarCollected += () =>
+                    {
+                        _score++;
+                        UpdateScoreText();
+                    };
+                }
+            }
+        }
+    }
+    void UpdateScoreText()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = "Score: " + _score.ToString();
+        }
     }
 }
-
-
-// void SpawnObject()
-// {
-//     float randomX = Random.Range(minX, maxX);
-//     float randomY = Random.Range(1,4);
-//     Vector3 spawnPosition = new Vector3(randomX, randomY, 0);
-//     if (spawnedObjects.Count >= 2)
-//     {
-//         Destroy(spawnedObjects[0]);
-//         spawnedObjects.RemoveAt(0);
-//     }
-//     GameObject newHoop= Instantiate(spawnObjects, spawnPosition, Quaternion.identity);
-//     spawnedObjects.Add(newHoop);
-//     if (spawnedObjects.Count > 1)
-//     {
-//         float previousY = spawnedObjects[spawnedObjects.Count - 2].transform.position.y;
-//         if (spawnPosition.y <= previousY)
-//         {
-//             float newY = previousY + 1f; 
-//             spawnPosition.y = newY;
-//             newHoop.transform.position = spawnPosition;
-//         }
-//     }
-// }
