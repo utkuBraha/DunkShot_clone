@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HoopController : MonoBehaviour
@@ -33,17 +31,12 @@ public class HoopController : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0))
         {
-          
             onMouseButtonDown = false;
         }
-
         if (IsRotating && onMouseButtonDown)
         {
             float rotationX = Input.GetAxis("Mouse X") * rotationSpeed;
             transform.RotateAround(centre.position, Vector3.forward, rotationX);
-
-            // desiredPos = (transform.position - centre.position).normalized * radius + centre.position;
-            // transform.position = Vector3.MoveTowards(transform.position, desiredPos, radiusSpeed * Time.deltaTime);
         }
     }
 }

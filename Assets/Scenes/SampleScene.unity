@@ -1044,7 +1044,10 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 2384049136456982445, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
     - {fileID: 3947576282731132287, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 967751276014261338, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1936503845608521327}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
 --- !u!1 &497365879
@@ -1687,6 +1690,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706042978}
   m_CullTransparentMesh: 1
+--- !u!4 &712177660 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 967751276014261338, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
+  m_PrefabInstance: {fileID: 422881059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &759093536
 GameObject:
   m_ObjectHideFlags: 0
@@ -3762,7 +3770,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40e8a17534d4c05a28b16e7491ab3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offset: {x: 5, y: 4.45}
+  _offset: {x: 5, y: 3.97}
+  cameraDistance: 3
   _speed: 3
   ball: {fileID: 1936503845608521327}
 --- !u!4 &1936503845608521327 stripped
@@ -3787,7 +3796,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 712177660}
     m_Modifications:
     - target: {fileID: 2629052997225547632, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
       propertyPath: orb
@@ -3810,12 +3819,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1061094185}
     - target: {fileID: 6251639921117863366, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4897959
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251639921117863366, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4897959
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251639921117863366, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.05
+      value: -0.08495
       objectReference: {fileID: 0}
     - target: {fileID: 6251639921117863366, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.48
+      value: -1.0612245
       objectReference: {fileID: 0}
     - target: {fileID: 6251639921117863366, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3827,15 +3844,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6251639921117863366, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6251639921117863366, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6251639921117863366, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6251639921117863366, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3852,6 +3869,10 @@ PrefabInstance:
     - target: {fileID: 7222609759118456549, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
       propertyPath: m_Name
       value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 7446215530809977619, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
+      propertyPath: m_BodyType
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3871,4 +3892,3 @@ SceneRoots:
   - {fileID: 510488497}
   - {fileID: 176307973}
   - {fileID: 497365880}
-  - {fileID: 6531314898425311998}

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class Spawner : MonoBehaviour
@@ -13,7 +12,7 @@ public class Spawner : MonoBehaviour
     private List<GameObject> _spawnedObjects = new List<GameObject>();
     private Vector3 _lastSpawnedPosition;
     [SerializeField] private TextMeshProUGUI scoreText;
-    private int _score;
+    private int _starScore;
     void Start()
     {
       ballScript = GameObject.Find("Ball").GetComponent<BallScript>();
@@ -73,7 +72,7 @@ public class Spawner : MonoBehaviour
                 {
                     starController.OnStarCollected += () =>
                     {
-                        _score++;
+                        _starScore++;
                         UpdateScoreText();
                     };
                 }
@@ -84,7 +83,7 @@ public class Spawner : MonoBehaviour
     {
         if (scoreText != null)
         {
-            scoreText.text = "Score: " + _score.ToString();
+            scoreText.text = "Score: " + _starScore.ToString();
         }
     }
 }

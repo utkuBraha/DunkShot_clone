@@ -26,22 +26,21 @@ public class BallScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("scoretrigger"))
         {
-            Debug.Log("Score");
             if (scoreTriggerController != null)
             {
-                Debug.Log("Deactivate Rotation");
-                scoreTriggerController.DeactivateRotation();
+                scoreTriggerController.DeactivateRotation(gameObject);
             }
 
             scoreTriggerController = other.gameObject.GetComponent<ScoreTriggerController>();
-            scoreTriggerController.ActivateRotation();
+            scoreTriggerController.ActivateRotation(gameObject);
             other.gameObject.SetActive(false);
             _score++;
             UpdateScoreText();
             consecutiveCollisions++;
-            if (consecutiveCollisions == 2)
+            if (consecutiveCollisions >= 2)
             {
                 ActivateGameObject();
+                _score ++;
             }
             if (_score > _highScore)
             {
@@ -53,7 +52,6 @@ public class BallScript : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("gameovertrigger"))
         {
-            Debug.Log("Game Over");
             gameManager.GameOver();
         }
         else if (other.gameObject.CompareTag("hoopboundary"))

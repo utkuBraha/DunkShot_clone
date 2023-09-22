@@ -21,7 +21,6 @@ public class Ball : MonoBehaviour
     void Start()
     {
         Physics2D.simulationMode = SimulationMode2D.Script;
-        rb.isKinematic = true;
         defaultBallPosition = transform.position;
         createSceneMain();
         createScenePrediction();  
@@ -48,7 +47,7 @@ public class Ball : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 GetComponent<LineRenderer>().positionCount = 0;
-                rb.isKinematic = false;
+                rb.simulated = true;
                 throwBall(rb);
             }
         }
