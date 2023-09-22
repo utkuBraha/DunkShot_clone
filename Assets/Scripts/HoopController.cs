@@ -2,19 +2,23 @@ using UnityEngine;
 
 public class HoopController : MonoBehaviour
 {
+    [SerializeField]private bool isRotating;
     public float radius;
     public float radiusSpeed;
     public float rotationSpeed;
 
     private Transform centre;
     private Vector3 desiredPos;
-    private bool isRotating = false;
     private bool onMouseButtonDown;
 
     public bool IsRotating
     {
         get => isRotating;
-        set => isRotating = value;
+        set
+        {
+            Debug.Log("IsRotating set to " + value);
+            isRotating = value;
+        }
     }
 
     void Start()

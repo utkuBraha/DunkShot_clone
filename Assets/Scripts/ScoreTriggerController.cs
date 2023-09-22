@@ -7,7 +7,8 @@ public class ScoreTriggerController : MonoBehaviour
     [SerializeField] private HoopController hoopController;
     private Rigidbody2D _rigidbody2D;
     public void ActivateRotation(GameObject ball)
-    {
+    {       
+
         hoopController.IsRotating = true;
         _rigidbody2D = ball.GetComponent<Rigidbody2D>();
         _rigidbody2D.velocity = Vector2.zero;
@@ -17,7 +18,6 @@ public class ScoreTriggerController : MonoBehaviour
     }
     public void DeactivateRotation(GameObject ball)
     {
-       
         hoopController.IsRotating = false;
         ball.transform.SetParent(null);
     }

@@ -7,6 +7,7 @@ public class StarController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            
             OnStarCollected?.Invoke();
             Destroy(gameObject);
         }

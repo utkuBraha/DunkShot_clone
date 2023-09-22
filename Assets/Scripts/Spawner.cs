@@ -12,11 +12,16 @@ public class Spawner : MonoBehaviour
     private List<GameObject> _spawnedObjects = new List<GameObject>();
     private Vector3 _lastSpawnedPosition;
     [SerializeField] private TextMeshProUGUI scoreText;
-    private int _starScore;
+    private int _starScore = 0;
+   
     void Start()
     {
       ballScript = GameObject.Find("Ball").GetComponent<BallScript>();
       _previousScore = ballScript.GetScore();
+      _starScore = PlayerPrefs.GetInt("starscore", 0);
+
+      UpdateStarScoreText();
+      
     }
     public void Update()
     {
@@ -73,17 +78,21 @@ public class Spawner : MonoBehaviour
                     starController.OnStarCollected += () =>
                     {
                         _starScore++;
-                        UpdateScoreText();
+                        UpdateStarScoreText();
                     };
                 }
             }
         }
     }
-    void UpdateScoreText()
+    void UpdateStarScoreText()
     {
         if (scoreText != null)
         {
-            scoreText.text = "Score: " + _starScore.ToString();
+            scoreText.text = " = " + _starScore.ToString();
+            PlayerPrefs.SetInt("starscore", _starScore);
+            PlayerPrefs.Save();
         }
+        
     }
+    
 }

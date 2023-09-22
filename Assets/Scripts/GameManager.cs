@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     }
     public void StartGame()
     {
+        
         _isGameActive = true;
         panel.SetActive(false);
     }
