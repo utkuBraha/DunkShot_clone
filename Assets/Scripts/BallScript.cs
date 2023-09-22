@@ -1,14 +1,26 @@
+
 using UnityEngine;
 using TMPro;
 
 public class BallScript : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI highScoreText; 
     public GameManager gameManager;
     public GameObject gameObjToActivate;
     private int _score;
     private int consecutiveCollisions = 0;
     public ScoreTriggerController scoreTriggerController;
+    private int _highScore;
+    private string highScoreKey = "HighScore"; 
+
+    private void Start()
+    {
+        _highScore = PlayerPrefs.GetInt(highScoreKey, 0);
+
+        UpdateScoreText();
+        UpdateHighScoreText();
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -22,18 +34,24 @@ public class BallScript : MonoBehaviour
             }
 
             scoreTriggerController = other.gameObject.GetComponent<ScoreTriggerController>();
-             scoreTriggerController.ActivateRotation();
+            scoreTriggerController.ActivateRotation();
             other.gameObject.SetActive(false);
             _score++;
             UpdateScoreText();
-            consecutiveCollisions++; 
+            consecutiveCollisions++;
             if (consecutiveCollisions == 2)
             {
                 ActivateGameObject();
             }
-            
-            
-        }else if (other.gameObject.CompareTag("gameovertrigger"))
+            if (_score > _highScore)
+            {
+                _highScore = _score;
+                PlayerPrefs.SetInt(highScoreKey, _highScore);
+                PlayerPrefs.Save();
+                UpdateHighScoreText();
+            }
+        }
+        else if (other.gameObject.CompareTag("gameovertrigger"))
         {
             Debug.Log("Game Over");
             gameManager.GameOver();
@@ -42,9 +60,9 @@ public class BallScript : MonoBehaviour
         {
             consecutiveCollisions = 0;
             DeactivateGameObject();
-            
         }
     }
+
     private void UpdateScoreText()
     {
         if (scoreText != null)
@@ -53,10 +71,19 @@ public class BallScript : MonoBehaviour
         }
     }
 
+    private void UpdateHighScoreText()
+    {
+        if (highScoreText != null)
+        {
+            highScoreText.text = "HIGH SCORE: " + _highScore.ToString();
+        }
+    }
+
     public int GetScore()
     {
         return _score;
     }
+
     private void ActivateGameObject()
     {
         if (gameObjToActivate != null)
@@ -71,5 +98,11 @@ public class BallScript : MonoBehaviour
         {
             gameObjToActivate.SetActive(false);
         }
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetInt(highScoreKey, _highScore);
+        PlayerPrefs.Save();
     }
 }

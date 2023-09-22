@@ -3,6 +3,7 @@ using UnityEngine;
 public class CamFollow : MonoBehaviour
 {
     [SerializeField] private Vector2 _offset;
+    [SerializeField] private float cameraDistance = 3f;
     private Vector2 _threshold;
     public float _speed;
     public Transform ball;
@@ -25,9 +26,9 @@ public class CamFollow : MonoBehaviour
     }
     private void FollowPlayer()
     {
-        Vector3 position = transform.position;
-        if (Mathf.Abs(transform.position.y - ball.transform.position.y) > _threshold.y)
-            position.y = ball.transform.position.y;
-        transform.position = Vector3.MoveTowards(transform.position, position, _speed * Time.deltaTime);
+        Vector3 position = Camera.main.transform.position;
+        if (Mathf.Abs(Camera.main.transform.position.y - ball.transform.position.y -cameraDistance /2) > _threshold.y)
+            position.y = ball.transform.position.y + cameraDistance /2;
+        Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, position, _speed * Time.deltaTime);
     }
 }
