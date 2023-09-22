@@ -44,11 +44,11 @@ public class Spawner : MonoBehaviour
             float maxXClamped = Mathf.Min(maxX, _lastSpawnedPosition.x + 1.5f);
             if (_lastSpawnedPosition.x < 0)
             {
-                randomX = Random.Range(1.3f, maxXClamped);
+                randomX = Random.Range(1.2f, maxXClamped);
             }
             else
             {
-                randomX = Random.Range(minXClamped, -1.3f);
+                randomX = Random.Range(minXClamped, -1.2f);
             }
             randomY = _lastSpawnedPosition.y + 1.5f;
             spawnPosition = new Vector3(randomX, randomY, 0);
@@ -62,7 +62,7 @@ public class Spawner : MonoBehaviour
         _spawnedObjects.Add(newHoop);
         _lastSpawnedPosition = spawnPosition;
        
-        if (Random.value < 0.9f)
+        if (Random.value < 0.3f)
         {
             Transform starTransform = newHoop.transform.Find("star");
             if (starTransform != null)
