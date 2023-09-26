@@ -7,7 +7,6 @@ public class CamFollow : MonoBehaviour
     private Vector2 _threshold;
     public float _speed;
     public Transform ball;
-
     public void Update()
     {
         FollowPlayer();
@@ -26,8 +25,12 @@ public class CamFollow : MonoBehaviour
     }
     private void FollowPlayer()
     {
+        if (ball == null)
+        {
+            return;
+        }
         Vector3 position = Camera.main.transform.position;
-        if (Mathf.Abs(Camera.main.transform.position.y - ball.transform.position.y -cameraDistance /2) > _threshold.y)
+        if (Mathf.Abs(Camera.main.transform.position.y - ball.transform.position.y -cameraDistance /2) > _threshold.y) 
             position.y = ball.transform.position.y + cameraDistance /2;
         Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, position, _speed * Time.deltaTime);
     }

@@ -4,14 +4,14 @@ using TMPro;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject spawnObjects;
-    public float minX = -2.2f;
-    public float maxX = 2.2f;
-    public BallScript ballScript;
-    private int _previousScore;
-    private List<GameObject> _spawnedObjects = new List<GameObject>();
-    private Vector3 _lastSpawnedPosition;
     [SerializeField] private TextMeshProUGUI scoreText;
+    private List<GameObject> _spawnedObjects = new List<GameObject>();
+    public GameObject spawnObjects;
+    public BallScript ballScript;
+    private Vector3 _lastSpawnedPosition;
+    private float minX = -2.2f;
+    private float maxX = 2.2f;
+    private int _previousScore;
     private int _starScore = 0;
    
     void Start()
@@ -19,9 +19,7 @@ public class Spawner : MonoBehaviour
       ballScript = GameObject.Find("Ball").GetComponent<BallScript>();
       _previousScore = ballScript.GetScore();
       _starScore = PlayerPrefs.GetInt("starscore", 0);
-
       UpdateStarScoreText();
-      
     }
     public void Update()
     {
@@ -65,7 +63,7 @@ public class Spawner : MonoBehaviour
         GameObject newHoop = Instantiate(spawnObjects, spawnPosition, Quaternion.identity);
         _spawnedObjects.Add(newHoop);
         _lastSpawnedPosition = spawnPosition;
-       
+        
         if (Random.value < 0.3f)
         {
             Transform starTransform = newHoop.transform.Find("star");
@@ -92,7 +90,5 @@ public class Spawner : MonoBehaviour
             PlayerPrefs.SetInt("starscore", _starScore);
             PlayerPrefs.Save();
         }
-        
     }
-    
 }

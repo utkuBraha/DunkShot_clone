@@ -481,6 +481,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoopController: {fileID: 4999485036873152176}
+--- !u!1 &2785121951005269792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2287313933639802352}
+  m_Layer: 0
+  m_Name: MousePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2287313933639802352
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2785121951005269792}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 967751276014261338}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3171376665094063822
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,6 +554,7 @@ Transform:
   - {fileID: 6372340555128036541}
   - {fileID: 5287006284773669543}
   - {fileID: 889399466957709782}
+  - {fileID: 2287313933639802352}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5046817102447593491
@@ -632,9 +664,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0787a01368a34c5eb9f57f6056c4d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRotating: 0
   radius: 10
-  radiusSpeed: 5
-  rotationSpeed: 5
+  rotationSpeed: 10
+  mousePosition: {fileID: 2287313933639802352}
 --- !u!1 &3947576282731132287
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,7 +875,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03380394, y: -6.1206512}
+  m_Offset: {x: 1.1282082, y: -6.1206512}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -853,7 +886,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.926943, y: 0.2654724}
+  m_Size: {x: 205.52701, y: 0.2654724}
   m_EdgeRadius: 0
 --- !u!1 &7112715445899624833
 GameObject:
