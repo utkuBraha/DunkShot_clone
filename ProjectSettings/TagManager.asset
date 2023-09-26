@@ -8,6 +8,9 @@ TagManager:
   - gameovertrigger
   - star
   - hoopboundary
+  - firsthoop
+  - secondhoop
+  - triggerexit
   layers:
   - Default
   - TransparentFX

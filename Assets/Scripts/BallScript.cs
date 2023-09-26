@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using TMPro;
 
@@ -17,7 +16,6 @@ public class BallScript : MonoBehaviour
     private void Start()
     {
         _highScore = PlayerPrefs.GetInt(highScoreKey, 0);
-
         UpdateScoreText();
         UpdateHighScoreText();
     }
@@ -37,6 +35,8 @@ public class BallScript : MonoBehaviour
             _score++;
             UpdateScoreText();
             consecutiveCollisions++;
+            
+
             if (consecutiveCollisions >= 2)
             {
                 ActivateGameObject();
@@ -58,6 +58,24 @@ public class BallScript : MonoBehaviour
         {
             consecutiveCollisions = 0;
             DeactivateGameObject();
+        }
+        if (_score > 0)
+        {
+            GameObject firstHoop = GameObject.FindWithTag("firsthoop");
+
+            if (firstHoop != null)
+            {
+                Destroy(firstHoop);
+            }
+        }
+        if (_score > 1)
+        {
+            GameObject secondHoop = GameObject.FindWithTag("secondhoop");
+
+            if (secondHoop != null)
+            {
+                Destroy(secondHoop);
+            }
         }
     }
 

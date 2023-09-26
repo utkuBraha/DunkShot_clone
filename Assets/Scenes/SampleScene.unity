@@ -501,8 +501,8 @@ MonoBehaviour:
   panel: {fileID: 404524572}
   pausePanel: {fileID: 97159804}
   gameOverPanel: {fileID: 1097356192}
-  _isGameActive: 0
-  UILayer: 5
+  isGameActive: 0
+  uILayer: 5
 --- !u!4 &176307973
 Transform:
   m_ObjectHideFlags: 0
@@ -1030,6 +1030,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hoop
       objectReference: {fileID: 0}
+    - target: {fileID: 3171376665094063822, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
+      propertyPath: m_TagString
+      value: firsthoop
+      objectReference: {fileID: 0}
     - target: {fileID: 4723513843305027698, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1041,6 +1045,10 @@ PrefabInstance:
     - target: {fileID: 4888255554411088702, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4959488808311767599, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4999485036873152176, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
       propertyPath: isRotating
@@ -2033,7 +2041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3588,6 +3596,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3171376665094063822, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
+      propertyPath: m_TagString
+      value: secondhoop
+      objectReference: {fileID: 0}
     - target: {fileID: 4723513843305027698, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -3596,10 +3608,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4959488808311767599, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4999485036873152176, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 176307972}
+    - target: {fileID: 5046817102447593491, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7759123914949440234, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -3610,7 +3630,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
-    - {fileID: 5310073154406305979, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
     - {fileID: 3947576282731132287, guid: dbbee758f892f4fada7ab8e23ba1528e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3793,9 +3812,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40e8a17534d4c05a28b16e7491ab3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offset: {x: 5, y: 3.97}
+  offset: {x: 5, y: 4}
   cameraDistance: 3
-  _speed: 3
+  speed: 3
   ball: {fileID: 1936503845608521327}
 --- !u!4 &1936503845608521327 stripped
 Transform:
@@ -3813,6 +3832,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35106db2d4dd4c97a13e0cba1826174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &2211673069552210402 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 7446215530809977619, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
+  m_PrefabInstance: {fileID: 6531314898425311998}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6531314898425311998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3821,6 +3845,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 712177660}
     m_Modifications:
+    - target: {fileID: 898712235233464769, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 2211673069552210402}
     - target: {fileID: 898712235233464769, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
       propertyPath: gameManager
       value: 
@@ -3845,6 +3873,22 @@ PrefabInstance:
       propertyPath: scoreTriggerController
       value: 
       objectReference: {fileID: 931279213}
+    - target: {fileID: 3172523777393607537, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3172523777393607537, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
+      propertyPath: m_Parameters.textureMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3172523777393607537, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85f6ad96db6ea494282a0ffa7ab18e12, type: 2}
+    - target: {fileID: 3172523777393607537, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b963f7c1dd784e0f8785ff427bb5b92, type: 2}
     - target: {fileID: 6251639921117863366, guid: 6cdc49a8f09bf4666b9207382a21f33e, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.4897959

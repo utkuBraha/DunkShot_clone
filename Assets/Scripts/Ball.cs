@@ -33,7 +33,7 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        if (gameManager._isGameActive == false || GameManager.Instance.IsPointerOverUIElement())
+        if (gameManager.isGameActive == false || GameManager.Instance.IsPointerOverUIElement())
         {
             startPosition = transform.position;
             GetComponent<LineRenderer>().positionCount = 0;
@@ -54,7 +54,6 @@ public class Ball : MonoBehaviour
                 CreateTrajectory(newBallPrediction);
                 Destroy(newBallPrediction);
             }
-
             if (Input.GetMouseButtonUp(0))
             {
                 GetComponent<LineRenderer>().positionCount = 0;
@@ -63,7 +62,6 @@ public class Ball : MonoBehaviour
             }
         }
     }
-
     void FixedUpdate()
     {
         if (!sceneMainPhysics.IsValid()) return;
