@@ -59,6 +59,13 @@ public class BallScript : MonoBehaviour
             consecutiveCollisions = 0;
             DeactivateGameObject();
         }
+        else if (other.gameObject.CompareTag("triggerexit"))
+        {
+            Debug.Log("Trigger exit"+ other.gameObject.name);
+            scoreTriggerController.ActivateRotation(gameObject);
+            other.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        }
+       
         if (_score > 0)
         {
             GameObject firstHoop = GameObject.FindWithTag("firsthoop");

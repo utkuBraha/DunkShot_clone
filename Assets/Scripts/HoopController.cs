@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class HoopController : MonoBehaviour
@@ -8,6 +10,9 @@ public class HoopController : MonoBehaviour
     public float radius;
     private bool onMouseButtonDown;
     public Transform mousePosition;
+    public Ball ball;
+    private bool isScoreIncreased;
+    [SerializeField] private BoxCollider2D triggerExitCollider;
     public bool IsRotating
     {
         get => isRotating;
@@ -23,25 +28,45 @@ public class HoopController : MonoBehaviour
     }
     void Update()
     {
-        if (GameManager.Instance.IsPointerOverUIElement())
+        if (GameManager.Instance.IsPointerOverUIElement()&& !GameManager.Instance.isGameActive)
         {
             return;
         }
+
+      
+
+
         if (Input.GetMouseButtonDown(0))
         {
             onMouseButtonDown = true;
         }
         else if (Input.GetMouseButtonUp(0))
         {
+            Debug.Log("Mouse button up");
             onMouseButtonDown = false;
+            if (ball != null)
+            {
+                Debug.Log("Ball is not null");
+                ball.transform.SetParent(null);
+                StartCoroutine(WaitAndSetTriggerValue());
+                
+            }
+          
         }
+        
 
-        if (IsRotating && onMouseButtonDown )
+        if (IsRotating && onMouseButtonDown)
         {
             mousePosition.position = Input.mousePosition;
             RotateHoop(Input.mousePosition);
             
         }
+    }
+
+    private IEnumerator WaitAndSetTriggerValue()
+    {
+        yield return new WaitForSeconds(.1f);
+        triggerExitCollider.isTrigger = false;
     }
     void RotateHoop(Vector3 mousePos)
     {
@@ -50,13 +75,14 @@ public class HoopController : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.localRotation = Quaternion.Euler(0, 0, angle-270);
     }
-    // private bool canRotate = true;
-    //
-    // private void OnTriggerExit(Collider other)
+   
+    
+    // private void OnTriggerExit2D(Collider2D other)
     // {
     //     if (other.CompareTag("triggerexit"))
     //     {
-    //         canRotate = false;
+    //         Debug.Log("Trigger exit detected!");
+    //         IsRotating = false; 
     //     }
     // }
 }
