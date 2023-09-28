@@ -13,6 +13,11 @@ public class HoopController : MonoBehaviour
     public Ball ball;
     private bool isScoreIncreased;
     [SerializeField] private BoxCollider2D triggerExitCollider;
+    public Transform frontHoop;
+    public float extensionAmount = 0.02f;
+    private bool hasExtended = false;
+    private Vector3 originalScale;
+
     public bool IsRotating
     {
         get => isRotating;
@@ -25,6 +30,7 @@ public class HoopController : MonoBehaviour
     {
         centre = transform;
         transform.position = (transform.position - centre.position).normalized * radius + centre.position;
+       
     }
     void Update()
     {
@@ -32,10 +38,6 @@ public class HoopController : MonoBehaviour
         {
             return;
         }
-
-      
-
-
         if (Input.GetMouseButtonDown(0))
         {
             onMouseButtonDown = true;
@@ -49,17 +51,12 @@ public class HoopController : MonoBehaviour
                 Debug.Log("Ball is not null");
                 ball.transform.SetParent(null);
                 StartCoroutine(WaitAndSetTriggerValue());
-                
             }
-          
         }
-        
-
         if (IsRotating && onMouseButtonDown)
         {
             mousePosition.position = Input.mousePosition;
             RotateHoop(Input.mousePosition);
-            
         }
     }
 
@@ -73,16 +70,15 @@ public class HoopController : MonoBehaviour
         Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, transform.position.z));
         Vector3 direction = worldMousePos - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //
+        if (!hasExtended && frontHoop != null)
+        {
+            Vector3 currentScale = frontHoop.localScale;
+            currentScale.y += extensionAmount;
+            frontHoop.localScale = currentScale;
+            hasExtended = true; 
+        }
         transform.localRotation = Quaternion.Euler(0, 0, angle-270);
     }
    
-    
-    // private void OnTriggerExit2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("triggerexit"))
-    //     {
-    //         Debug.Log("Trigger exit detected!");
-    //         IsRotating = false; 
-    //     }
-    // }
 }
